@@ -43,7 +43,7 @@ public class WordCount extends Configured implements Tool {
         protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
             int sum = 0;
 
-            // 리듀서는 키별로 전달된 등장횟수를 모두 더하여 전체 등장회수를 생성합니다.
+            // 리듀서는 키별로 전달된 등장횟수를 모두 더하여 전체 등장횟수를 생성합니다.
             // 문자가 key로 들어오고, 등장 횟수가 Iterable 형태로 전달됩니다. 이 값을 모두 더하여 결과를 출력합니다.
             for (IntWritable val : values) {
                 sum += val.get();
@@ -72,7 +72,7 @@ public class WordCount extends Configured implements Tool {
         FileInputFormat.addInputPath(job, new Path(args[0]));   // 입력 파일 위치 /// 지정한 위치의 파일을 라인단위로 읽어서 맵에 전달.
         FileOutputFormat.setOutputPath(job, new Path(args[1])); // 출력 파일 위치 /// 지정한 위치에 파일로 출력
 
-        // 정상적으로 끝나면 0을 리턴
+        // 잡이 제출 한 후 끝날 때 까지 기다리고 삼항연산자로 성공하면 0 실패하면 1을 리턴
         return job.waitForCompletion(true) ? 0 : 1;
     }
     public static void main(String[] args) throws Exception {

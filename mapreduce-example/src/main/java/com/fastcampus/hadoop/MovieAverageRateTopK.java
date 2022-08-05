@@ -28,11 +28,12 @@ public class MovieAverageRateTopK extends Configured implements Tool {
         @Override
         protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             String[] columns = value.toString().split(",");
+            // csv 파일의 헤더정보 제외시키기
             if (columns[0].equals("movieId")) {
                 return;
             }
-            movieId.set(columns[0]);
-            outValue.set("M" + columns[1]);
+            movieId.set(columns[0]); // 키값 예시) 1
+            outValue.set("M" + columns[1]); // 벨류값 예시 ) Toy Story (1995)
             context.write(movieId, outValue);
 
             System.out.println("MovieMapper의 map에서 MovidID 출력 : " + movieId + " outValue 출력 : " + outValue);
@@ -46,11 +47,12 @@ public class MovieAverageRateTopK extends Configured implements Tool {
         @Override
         protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             String[] colums = value.toString().split(",");
+            // csv파일의 헤더 정보 제외시키기
             if (colums[0].equals("userId")) {
                 return;
             }
-            movieId.set(colums[1]);
-            outValue.set("R" + colums[2]);
+            movieId.set(colums[1]); // 출력 키값 예시) 1
+            outValue.set("R" + colums[2]); // 출력 벨류값 예시 ) 4.0
             context.write(movieId, outValue);
 
             System.out.println("RatingMapper의 map에서 MovidID 출력 : " + movieId + " outValue 출력 : " + outValue);
@@ -64,16 +66,18 @@ public class MovieAverageRateTopK extends Configured implements Tool {
 
         @Override
         protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+            // 평균을 계산할때 레이팅리스트를 초기화 시키지 않으면 이전의 값들이 포함되어 있기 대문에 시작할 때 한번 클리어를 시킨다.
             ratingList.clear();
 
             for (Text value : values) {
+                // 첫번째 char 값이 M 으로 시작하는 value는 영화이름
                 if (value.charAt(0) == 'M') {
                     movieName.set(value.toString().substring(1));
-                } else if (value.charAt(0) == 'R') {
+                } else if (value.charAt(0) == 'R') { // R로 시작하는 벨류는 레이팅 리스트
                     ratingList.add(value.toString().substring(1));
                 }
             }
-
+            // 스트림으로 전환해서 mapToDouble을 통해 Double데이터로 바꾸고 평균 계산 단, 없다면 0.0으로 계산
             double average = ratingList.stream().mapToDouble(Double::parseDouble).average().orElse(0.0);
             outValue.set(String.valueOf(average));
             context.write(movieName, outValue);
