@@ -1,0 +1,4 @@
+com\fastcampus\hadoop\CopyFromLocal.class
+com\fastcampus\hadoop\ListStatus.class
+com\fastcampus\hadoop\FileSystemPrint.class
+com\fastcampus\hadoop\DeleteFile.class
