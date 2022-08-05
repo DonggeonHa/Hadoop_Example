@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="com.fastcampus.hadoop.WordCountTest" time="0.103" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="com.fastcampus.hadoop.WordCountTest" time="0.084" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Progra~1\Java\jdk1.8.0_341\jre\bin"/>
     <property name="java.vm.version" value="25.341-b10"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Hadoop-Example\mapreduce-example"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\HDG\Hadoop_Example\mapreduce-example"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Hadoop-Example\mapreduce-example"/>
+    <property name="user.dir" value="C:\HDG\Hadoop_Example\mapreduce-example"/>
     <property name="java.runtime.version" value="1.8.0_341-b10"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Progra~1\Java\jdk1.8.0_341\jre\lib\endorsed"/>
@@ -65,11 +65,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest" time="0.024"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest2" time="0.016"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountMapTest" time="0.01"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountWithCounter" time="0.022"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest" time="0.009"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest2" time="0.011"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountMapTest2" time="0.011"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountMapTest" time="0.008"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest2" time="0.015"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest" time="0.013"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountMapTest2" time="0.009"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest" time="0.01"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest2" time="0.01"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountWithCounter" time="0.019"/>
 </testsuite>

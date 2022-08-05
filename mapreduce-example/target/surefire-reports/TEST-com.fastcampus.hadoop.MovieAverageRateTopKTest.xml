@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="com.fastcampus.hadoop.MovieAverageRateTopKTest" time="0.546" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.fastcampus.hadoop.MovieAverageRateTopKTest" time="0.492" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Progra~1\Java\jdk1.8.0_341\jre\bin"/>
     <property name="java.vm.version" value="25.341-b10"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Hadoop-Example\mapreduce-example"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\HDG\Hadoop_Example\mapreduce-example"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Hadoop-Example\mapreduce-example"/>
+    <property name="user.dir" value="C:\HDG\Hadoop_Example\mapreduce-example"/>
     <property name="java.runtime.version" value="1.8.0_341-b10"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Progra~1\Java\jdk1.8.0_341\jre\lib\endorsed"/>
@@ -65,7 +65,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieRatingJoinReduceTest" time="0.476"/>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieMapTest" time="0.052"/>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="ratingMapTest" time="0.018"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieMapTest" time="0.42"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieRatingJoinReduceTest" time="0.043"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="topKMapTest" time="0.01"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="topKReduceTest" time="0.009"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="ratingMapTest" time="0.01"/>
 </testsuite>

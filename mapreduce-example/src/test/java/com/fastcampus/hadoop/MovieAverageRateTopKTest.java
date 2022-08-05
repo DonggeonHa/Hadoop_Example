@@ -56,4 +56,30 @@ public class MovieAverageRateTopKTest {
                 .runTest();
 
     }
+
+    /** 두번째 MapReduce - Unit Test */
+    @Test
+    public void topKMapTest() throws IOException {
+        // withOutput 위치를 바꿀 시 에러가 뜸 즉, 출력순서가 뒤바뀜
+        // 작은 순서부터 실행이 되야 하는데 순서가 뒤바뀌면서 큰 순서부터 되버려서 에러가 생김
+        new MapDriver<Object, Text, Text, Text>()
+                .withMapper(new MovieAverageRateTopK.TopKMapper())
+                .withInput(new LongWritable(0), new Text("Toy Story (1995)\t4.25"))
+                .withInput(new LongWritable(1), new Text("Jumanji (1995)\t3.5"))
+                .withOutput(new Text("3.5"), new Text("Jumanji (1995)"))
+                .withOutput(new Text("4.25"), new Text("Toy Story (1995)"))
+                .runTest();
+    }
+
+    @Test
+    public void topKReduceTest() throws IOException {
+        // 여기도 출력 결과의 순서가 중요함. 여긴 높은 평점부터 낮은평점순으로 순서가 되야 함.
+        new ReduceDriver<Text, Text, Text, Text>()
+                .withReducer(new MovieAverageRateTopK.TopKReducer())
+                .withInput(new Text("3.5"), Arrays.asList(new Text("Jumanji (1995)")))
+                .withInput(new Text("4.25"), Arrays.asList(new Text("Toy Story (1995)")))
+                .withOutput(new Text("Toy Story (1995)"), new Text("4.25"))
+                .withOutput(new Text("Jumanji (1995)"), new Text("3.5"))
+                .runTest();
+    }
 }
