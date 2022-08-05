@@ -1,6 +1,5 @@
 package com.fastcampus.hadoop;
 
-import org.apache.avro.generic.GenericData;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -35,6 +34,8 @@ public class MovieAverageRateTopK extends Configured implements Tool {
             movieId.set(columns[0]);
             outValue.set("M" + columns[1]);
             context.write(movieId, outValue);
+
+            System.out.println("MovieMapper의 map에서 MovidID 출력 : " + movieId + " outValue 출력 : " + outValue);
         }
     }
 
@@ -51,6 +52,8 @@ public class MovieAverageRateTopK extends Configured implements Tool {
             movieId.set(colums[1]);
             outValue.set("R" + colums[2]);
             context.write(movieId, outValue);
+
+            System.out.println("RatingMapper의 map에서 MovidID 출력 : " + movieId + " outValue 출력 : " + outValue);
         }
     }
 
@@ -74,6 +77,8 @@ public class MovieAverageRateTopK extends Configured implements Tool {
             double average = ratingList.stream().mapToDouble(Double::parseDouble).average().orElse(0.0);
             outValue.set(String.valueOf(average));
             context.write(movieName, outValue);
+
+            System.out.println("MovieRatingJoinReducer의 reduce에서 movieName 출력 : " + movieName + " outValue 출력 : " + outValue);
         }
     }
 
@@ -96,6 +101,8 @@ public class MovieAverageRateTopK extends Configured implements Tool {
             for (Double k : topKMap.keySet()) {
                 // 맵의 아웃풋으로 평점이 키로 출력이 되고, 두번째로 영화제목이 출력이 된다
                 context.write(new Text(k.toString()), topKMap.get(k));
+
+                System.out.println("TopKMapper의 cleanup에서 키값 출력 : " + new Text(k.toString()) + " Value 출력 : " + topKMap.get(k));
             }
         }
     }
@@ -118,6 +125,8 @@ public class MovieAverageRateTopK extends Configured implements Tool {
             // 내림차순 키값으로 가져와서 처리
             for (Double k : topKMap.descendingKeySet()) {
                 context.write(topKMap.get(k), new Text(k.toString()));
+
+                System.out.println("TopKReducer의 cleanup에서 키값 출력 : " + topKMap.get(k) + " Value 출력 : " + new Text(k.toString()));
             }
         }
     }
@@ -130,10 +139,10 @@ public class MovieAverageRateTopK extends Configured implements Tool {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, MovieMapper.class);
-        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, RatingMapper.class);
+        MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, MovieMapper.class);  // MovieMapper에서 사용할 데이터 셋을 넣어줌
+        MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, RatingMapper.class); // RatingMapper에서 사용할 데이터 셋을 넣어줌
 
-        FileOutputFormat.setOutputPath(job, new Path(args[2]));
+        FileOutputFormat.setOutputPath(job, new Path(args[2]));                                         // 아웃풋 디렉토리를 지정해줌
 
         int returnCode = job.waitForCompletion(true) ? 0 : 1;
 
@@ -147,8 +156,8 @@ public class MovieAverageRateTopK extends Configured implements Tool {
             job2.setOutputKeyClass(Text.class);
             job2.setOutputValueClass(Text.class);
 
-            FileInputFormat.addInputPath(job2, new Path(args[2]));
-            FileOutputFormat.setOutputPath(job2, new Path(args[3]));
+            FileInputFormat.addInputPath(job2, new Path(args[2]));                                      // 위의 setOutputPath랑 같이 씀
+            FileOutputFormat.setOutputPath(job2, new Path(args[3]));                                    // 2번째 맵리듀스 프로그램의 최종 Output 디렉토리 전달
 
             return job2.waitForCompletion(true) ? 0 : 1;
         }

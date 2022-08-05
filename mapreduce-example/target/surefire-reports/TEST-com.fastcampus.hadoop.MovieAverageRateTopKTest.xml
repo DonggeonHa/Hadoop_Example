@@ -65,9 +65,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieMapTest" time="0.42"/>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieRatingJoinReduceTest" time="0.043"/>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="topKMapTest" time="0.01"/>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="topKReduceTest" time="0.009"/>
-  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="ratingMapTest" time="0.01"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieRatingJoinReduceTest" time="0.417"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="topKMapTest" time="0.038"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="topKReduceTest" time="0.014"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="ratingMapTest" time="0.012"/>
+  <testcase classname="com.fastcampus.hadoop.MovieAverageRateTopKTest" name="movieMapTest" time="0.011"/>
 </testsuite>

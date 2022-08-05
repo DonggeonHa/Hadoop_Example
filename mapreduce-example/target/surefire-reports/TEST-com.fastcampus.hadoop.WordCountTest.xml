@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="com.fastcampus.hadoop.WordCountTest" time="0.084" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="com.fastcampus.hadoop.WordCountTest" time="0.083" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Progra~1\Java\jdk1.8.0_341\jre\bin"/>
@@ -65,11 +65,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountMapTest" time="0.008"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest2" time="0.015"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest" time="0.013"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest2" time="0.008"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest" time="0.011"/>
   <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountMapTest2" time="0.009"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest" time="0.01"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountReduceTest2" time="0.01"/>
-  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountWithCounter" time="0.019"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountWithCounter" time="0.022"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountMapTest" time="0.008"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest2" time="0.013"/>
+  <testcase classname="com.fastcampus.hadoop.WordCountTest" name="wordCountTest" time="0.012"/>
 </testsuite>
